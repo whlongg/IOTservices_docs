@@ -1,0 +1,105 @@
+Thiết kế hệ thống:
+  Thư viện nào 
+  Dùng mạch gì 
+  Xây dựng cấu trúc code như nào
+  Xây dựng mạch, chống nhiễu...etc
+Code:
+  Code trâu -> Sủa lỗi -> Tối ưu(Thanh ghi, dung lượng, hiệu suất, năng lượng, thuật toán)
+kiểm thử:
+
+Làm mạch -> viết báo cáo khoa học
+  *Điểm mới và tính sáng tạo (Mở đầu)
+  *Tổng quan
+  *Chi tiết (Thiết kế hệ thống & làm mạch)
+  *Loại bỏ tài nguyên không cần thiết 
+
+Giải thuật:
+  Tìm kiếm 
+  Sắp xếp 
+  Đồ thị (cần nếu làm robot dò đường hoặc map)
+Cấu trúc dữ liệu:
+  stack
+  queue
+  linked list
+  map, set,
+
+Nhà thông minh:
+  *Điều khiển từ xa
+  *Tự động hóa(client -> backend(server))
+  *Báo động
+  *Giám sát
+  *Tiết kiệm năng lượng
+
+backend:
+  database:
+    Giải thuật:
+    Tìm kiếm 
+    Sắp xếp 
+    Đồ thị (cần nếu làm robot dò đường hoặc map)
+  Cấu trúc dữ liệu:
+    stack
+    queue
+    linked list
+    map, set,
+  API:
+   client -> backend(server)
+   backend -> client
+web:
+  Đăng nhập: 
+    *Tài khoản |
+    *Mật khẩu  | -API-> backend -> database (lưu trữ thông tin tài khoản)
+    Nếu giống nhau: backend -> client (đăng nhập thành công)
+
+
+ESP32:
+Giao tiếp với esp32 khác:
+  Giao tiếp qua wifi
+    Hiểu cách sử dụng các chế độ hoạt động của Wi-Fi: Station mode, Access Point mode, và Station + AP mode.
+  Giao tiếp qua bluetooth
+  Giao tiếp qua uart (dây tx, rx)
+   Ví dụ: UART (Universal Asynchronous Receiver/Transmitter): Để giao tiếp nối tiếp, như khi gửi và nhận dữ liệu từ một module GPS, sim, module NFC.
+   arduino để xử lí, esp32 làm chân giao tiếp mở rộng: Dùng uart ( chân tx, rx)
+
+Quản lí năng lượng:
+  Deepsleep: chế độ tiết kiệm năng lượng(Dùng mạch được trong vài tháng mà không cần sạc pin nếu tối ưu tốt)
+  Ví dụ: chờ lệnh(deepsleep): keywakeup -> chạy chương trình -> chờ lệnh(deepsleep)
+  milis(): đếm thời gian chạy chương trình
+  RTC: Đồng hồ thời gian thực
+
+Bảo mật: 
+  SSL, TLS: mã hóa dữ liệu
+  Ví dụ: Lưu tài khoản mật khẩu
+
+Cách đọc datasheet:
+  *Đọc từng phần
+  *Hiểu từng phần
+  *Thực hành
+
+ADC và DAC
+  ADC (Analog-to-Digital Converter): ESP32 có các chân ADC (chân analog) có thể chuyển đổi tín hiệu analog thành tín hiệu số. Có ba bộ ADC hỗ trợ lên đến 18 kênh đầu vào.
+  DAC (Digital-to-Analog Converter): ESP32 cũng hỗ trợ DAC để tạo tín hiệu analog từ tín hiệu số, hữu ích cho các ứng dụng điều khiển âm thanh.
+
+Làm sao để kết hợp được nhiều mạch,sensor với nhau?
+
+Có điện trở:
+  5V
+  PWM: 0V -> 3.3V (0, 255)
+    PWM (Pulse Width Modulation) là một kỹ thuật điều chế độ rộng xung thường được dùng để điều khiển công suất điện hoặc điều chỉnh tín hiệu số thành tín hiệu tương tự. Trong trường hợp ESP32, PWM thường được sử dụng để điều chỉnh độ sáng đèn LED, tốc độ động cơ, hoặc tạo tín hiệu âm thanh.
+
+    Cách PWM hoạt động
+    PWM tạo ra một chuỗi xung với chu kỳ bật-tắt. Chu kỳ bật-tắt này có thể thay đổi, và thời gian xung bật trong một chu kỳ được gọi là "chu kỳ nhiệm vụ" (duty cycle). Chu kỳ nhiệm vụ được đo bằng phần trăm, ví dụ:
+
+    0% duty cycle: xung luôn ở mức thấp (0V).
+    50% duty cycle: xung có thời gian bật và tắt bằng nhau (trung bình sẽ bằng 50% điện áp tối đa).
+    100% duty cycle: xung luôn ở mức cao (tối đa điện áp).
+
+Giao tiếp qua wifi: (API & MQTT) là 1 nhưng mqtt nhẹ hơn api
+  Hiểu cách sử dụng các chế độ hoạt động của Wi-Fi: Station mode, Access Point mode, và Station + AP mode.
+  Ví dụ: 
+    Station mode: Kết nối với một mạng Wi-Fi đã tồn tại. (Truy cập internet)
+      Ứng dụng vào việc lấy thông tin từ internet, backend...
+    Access Point mode: Tạo một mạng Wi-Fi mới. (Tạo mạng riêng)
+      Ứng dụng vào nhà thông minh: Tạo mạng riêng để điều khiển các thiết bị trong nhà thông minh.
+    Station + AP mode: Kết nối với một mạng Wi-Fi đã tồn tại và tạo một mạng Wi-Fi mới. (Truy cập internet và tạo mạng riêng)
+      App trên điện thoại -> Kết nối đến Access Point mode -> internet -> backend -> Googlehome
+
